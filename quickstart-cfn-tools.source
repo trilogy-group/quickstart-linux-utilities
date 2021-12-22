@@ -283,30 +283,37 @@ function qs_aws-cfn-bootstrap() {
         echo "Warning: Support for this OS Version is deprecated - Consider upgrading to 20.04"
         sudo apt-get update -y
         sudo apt-get install python2.7 python-pip -y
+        sudo pip install pystache==0.5.4
         sudo pip2 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
     elif [ "$INSTANCE_OSTYPE" == "ubuntu" ] && [ "$INSTANCE_OSVERSION" == "18.04" ]; then
         echo "Warning: Support for this OS Version is deprecated - Consider upgrading to 20.04"
         sudo apt-get update -y
         sudo apt-get install python-pip -y
+        sudo pip install pystache==0.5.4
         sudo pip2 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
     elif [ "$INSTANCE_OSTYPE" == "ubuntu" ] && [ "$INSTANCE_OSVERSION" == "20.04" ]; then
         sudo apt-get update -y
         apt-get install python2.7 -y
         curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
         sudo python2.7 get-pip.py
+        sudo pip install pystache==0.5.4
         sudo pip2 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
     elif [ "$INSTANCE_OSTYPE" == "rhel" ]; then
         yum update -y
+        sudo pip install pystache==0.5.4
         pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
     elif [ "$INSTANCE_OSTYPE" == "centos" ]; then
         yum update -y
         qs_bootstrap_pip
+        sudo pip install pystache==0.5.4
         pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
     elif [ "$INSTANCE_OSTYPE" == "fedora" ]; then
+        sudo pip install pystache==0.5.4
         pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
     elif [ "$INSTANCE_OSTYPE" == "sles" ]; then
         zypper -n refresh && zypper -n update
         zypper -n install python2-pip
+        sudo pip install pystache==0.5.4
         pip2.7 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
         echo "[WARNING] not implemeneted"
     else
